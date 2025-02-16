@@ -41,8 +41,7 @@ This project is being developed for an upcoming hackathon. While the full scope 
 - Use GitHub issues for discussions and bug tracking.
 - Work on feature branches and submit pull requests when ready.
 
-## 📜 License
-[MIT License](LICENSE)
+
 
 ---
 ⚡ **Let’s build something awesome together!**
