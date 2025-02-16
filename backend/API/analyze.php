@@ -27,5 +27,11 @@ $email = trim($data["email"]);
 
 $isPhishing = rand(0, 1) ? "Ja" : "Nee";
 
+http_response_code(200);
+echo json_encode([
+    "message" => "E-mail geanalyseerd",
+    "content" => $email,
+    "is_phishing" => $isPhishing
+]);
 
 ?>
