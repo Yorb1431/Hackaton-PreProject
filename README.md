@@ -3,11 +3,16 @@
 Welcome to our AI & Cybersecurity project! This is a small-scale project where we explore the intersection of artificial intelligence and cybersecurity. As beginners, our goal is to learn, experiment, and build something exciting!
 
 ## 🚀 Project Overview
-This project is being developed for an upcoming hackathon. While the full scope is still being defined, our focus will be on leveraging **Python** to tackle security-related challenges using AI. 
+This project is being developed as a preparation for the upcoming **Agentic Hackathon** at **The Beacon**. While the full scope is still being defined, our focus will be on leveraging **Python** to tackle security-related challenges using AI. 
+
+🔗 **Event Links:**  
+- [Hackathon Website](https://www.ns2agi.com/agentic-hackathon/)  
+- [LinkedIn Posts](https://www.linkedin.com/company/north-star-agi/posts/)  
+- [Eventbrite Registration](https://www.eventbrite.be/e/agentic-hackathon-north-star-agi-tickets-1236838319709)  
 
 ## 🎯 Goals & Objectives
 - Learn more about AI applications in cybersecurity.
-- Develop a functional prototype during the hackathon.
+- Develop a functional prototype as practice before the hackathon.
 - Improve our Python skills and understanding of security threats.
 - Collaborate efficiently using GitHub.
 
@@ -34,15 +39,12 @@ This project is being developed for an upcoming hackathon. While the full scope 
 - [ ] Define the project scope
 - [ ] Research AI cybersecurity applications
 - [ ] Start coding & testing
-- [ ] Present at the hackathon!
+- [ ] Use insights to prepare for the hackathon!
 
 ## 🤝 Contribution & Collaboration
 - We are collaborating on this project as beginners, so any feedback, suggestions, or help is welcome!
 - Use GitHub issues for discussions and bug tracking.
 - Work on feature branches and submit pull requests when ready.
 
-
-
 ---
 ⚡ **Let’s build something awesome together!**
-
