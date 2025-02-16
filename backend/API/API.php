@@ -16,6 +16,17 @@
     }
     
     $email = trim($data["email"]);
+    $isPhishing = rand(0, 1) ? "Ja" : "Nee"; // Willekeurige testwaarde
+
+    echo json_encode([
+        "message" => "E-mail geanalyseerd",
+        "content" => $email,
+        "is_phishing" => $isPhishing
+    ]);
+} else {
+    echo json_encode(["error" => "Ongeldige request-methode"]);
+    http_response_code(405);
+}
 
 
 
