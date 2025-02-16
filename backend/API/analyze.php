@@ -24,4 +24,8 @@ if (empty($data["email"])) {
 
 $email = trim($data["email"]);
 
+
+$isPhishing = rand(0, 1) ? "Ja" : "Nee";
+
+
 ?>
