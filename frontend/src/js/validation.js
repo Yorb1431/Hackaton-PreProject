@@ -1,3 +1,16 @@
 function validateEmailInput(email) {
-  return email.trim().length > 10; // Eenvoudige check: minimaal 10 tekens
+  if (email.length < 10) return false; // Minimaal 10 tekens lang
+
+  const phishingKeywords = [
+    "bank",
+    "verifieer",
+    "reset",
+    "wachtwoord",
+    "factuur",
+    "winnaar",
+    "betaling",
+  ];
+  return !phishingKeywords.some((keyword) =>
+    email.toLowerCase().includes(keyword)
+  );
 }
