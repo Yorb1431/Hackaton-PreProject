@@ -14,7 +14,7 @@ We zullen een eenvoudige AI bouwen die phishing-e-mails herkent. Dit wordt gedaa
 - Scikit-learn en NLTK te gebruiken voor tekstanalyse.
 - Een functionele webinterface te bouwen met HTML, PHP en TailwindCSS.
 
-🔗 **Event Links:**  
+🔗 **Event Links:**
 - [Hackathon Website](https://www.ns2agi.com/agentic-hackathon/)  
 - [LinkedIn Posts](https://www.linkedin.com/company/north-star-agi/posts/)  
 - [Eventbrite Registration](https://www.eventbrite.be/e/agentic-hackathon-north-star-agi-tickets-1236838319709)  
