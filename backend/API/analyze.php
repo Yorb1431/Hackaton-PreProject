@@ -38,7 +38,7 @@ if (empty($urls)) {
 $isPhishing = rand(0, 1) ? "Ja" : "Nee";
 
 http_response_code(200);
-echo json_encode([
+echo json_encode([  
     "message" => "URL geanalyseerd",
     "urls" => $urls,
     "is_phishing" => $isPhishing
