@@ -1,39 +1,46 @@
 <?php
-// 📌 CORS en headers instellen zodat andere systemen toegang hebben tot deze API
+// Headers
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json");
 header("Access-Control-Allow-Methods: POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
 
-// 📌 Controleer of het verzoek een POST-methode is
+// Alleen POST requests accepteren
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-    http_response_code(405); // 405 = Method Not Allowed
+    http_response_code(405);
     echo json_encode(["error" => "Ongeldige request-methode"]);
     exit;
 }
 
-// 📌 JSON input ophalen en decoderen
+// JSON input ophalen en decoderen
 $data = json_decode(file_get_contents("php://input"), true);
 
-// 📌 Controleer of er een 'email' veld in de input zit en of deze niet leeg is
+// Controleren of er een e-mailtekst is ontvangen
 if (empty($data["email"])) {
-    http_response_code(400); // 400 = Bad Request
+    http_response_code(400);
     echo json_encode(["error" => "Geen e-mailtekst ontvangen"]);
     exit;
 }
 
-// 📌 De ontvangen e-mailtekst opschonen
 $email = trim($data["email"]);
 
-// 📌 Simuleer een phishing-detectie (voor nu random "Ja" of "Nee")
-// 🚀 TODO: Hier moet later een verzoek naar het AI-model komen om echte detectie uit te voeren
+// URLs extraheren uit de e-mailtekst
+preg_match_all('/https?:\/\/[^\s"]+/', $email, $matches);
+$urls = $matches[0];
+
+if (empty($urls)) {
+    http_response_code(400);
+    echo json_encode(["error" => "Geen URL's gevonden in de e-mail"]);
+    exit;
+}
+
+// Voor nu random bepalen of de URL phishing is (later vervangen door AI)
 $isPhishing = rand(0, 1) ? "Ja" : "Nee";
 
-// 📌 JSON-respons terugsturen met de analyse
-http_response_code(200); // 200 = OK
+http_response_code(200);
 echo json_encode([
-    "message" => "E-mail geanalyseerd",
-    "content" => $email,
+    "message" => "URL geanalyseerd",
+    "urls" => $urls,
     "is_phishing" => $isPhishing
 ]);
 ?>
