@@ -6,23 +6,81 @@
     <title>Phishing Detector</title>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body class="bg-gray-100 flex justify-center items-center min-h-screen">
-    <div class="bg-white shadow-lg rounded-lg p-6 w-full max-w-lg">
-      <h1 class="text-2xl font-bold text-center mb-4">Phishing Detector</h1>
-      <textarea
-        id="emailInput"
-        class="w-full p-2 border rounded-lg"
-        placeholder="Plak hier de e-mailtekst..."
-      ></textarea>
-      <button
-        onclick="analyzeEmail()"
-        class="mt-4 w-full bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600"
-      >
-        Analyseren
-      </button>
-      <p id="result" class="mt-4 text-center text-lg"></p>
-    </div>
+  <body class="bg-gray-900 text-white font-sans">
+    <!-- Header -->
+    <header class="bg-gray-800 py-6 shadow-md">
+      <div class="container mx-auto text-center">
+        <h1 class="text-3xl font-bold text-neon-blue">
+          🛡️ AI Phishing Detector
+        </h1>
+        <p class="text-gray-400 mt-2">
+          Voer een e-mailtekst in en ontdek of deze phishing bevat.
+        </p>
+      </div>
+    </header>
 
+    <!-- Main Content -->
+    <main class="flex flex-col items-center justify-center min-h-screen px-4">
+      <section class="bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-lg">
+        <h2 class="text-xl font-semibold text-neon-blue mb-4">
+          🔍 Analyseer een e-mail
+        </h2>
+
+        <!-- Form -->
+        <form id="emailForm" class="space-y-4">
+          <textarea
+            id="emailInput"
+            class="w-full p-3 rounded bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-neon-blue"
+            rows="5"
+            placeholder="Plak hier de e-mailtekst..."
+          ></textarea>
+
+          <button
+            type="submit"
+            class="w-full py-2 bg-neon-blue text-gray-900 font-semibold rounded hover:bg-blue-500 transition"
+          >
+            Analyseer
+          </button>
+        </form>
+
+        <!-- Resultaat -->
+        <div id="result" class="mt-4 text-lg font-semibold"></div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 py-4 text-center mt-10">
+      <p class="text-gray-400">
+        Gemaakt door
+        <a
+          href="https://github.com/YorbeL"
+          class="text-neon-blue hover:underline"
+          >Yorbe van der Mast</a
+        >
+        &
+        <a
+          href="https://github.com/AngeloVeldbloem"
+          class="text-neon-blue hover:underline"
+          >Angelo Veldbloem</a
+        >
+      </p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="./js/validation.js"></script>
     <script src="./js/app.js"></script>
+
+    <!-- Tailwind Custom Colors -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "neon-blue": "#00FFFF",
+            },
+          },
+        },
+      };
+    </script>
   </body>
 </html>
