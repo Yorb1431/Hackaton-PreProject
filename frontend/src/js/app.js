@@ -1,64 +1,41 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("emailForm");
   const emailInput = document.getElementById("emailInput");
-  const resultText = document.getElementById("result");
+  const errorMessage = document.getElementById("errorMessage");
+  const loading = document.getElementById("loading");
+  const result = document.getElementById("result");
 
-  form.addEventListener("submit", async function (event) {
-    event.preventDefault();
-    analyzeEmail();
-  });
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    result.innerHTML = "";
+    errorMessage.classList.add("hidden");
 
-  async function analyzeEmail() {
-    const email = emailInput.value.trim();
-
-    // Controleer of de invoer geldig is
-    if (!validateEmailInput(email)) {
-      showMessage(
-        resultText,
-        "⚠️ Ongeldige invoer. Voer een correcte e-mailtekst in.",
-        "text-red-500"
-      );
+    const emailText = emailInput.value.trim();
+    if (emailText === "") {
+      errorMessage.classList.remove("hidden");
       return;
     }
 
-    // Laad-indicator tonen
-    showMessage(resultText, "⏳ Bezig met analyseren...", "text-blue-500");
+    loading.classList.remove("hidden");
 
     try {
-      const response = await fetch("http://localhost/backend/analyze.php", {
+      const response = await fetch("analyze.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email: emailText }),
       });
 
       const data = await response.json();
+      loading.classList.add("hidden");
 
       if (response.ok) {
-        const isPhishing = data.is_phishing === "Ja";
-        showMessage(
-          resultText,
-          `🔍 Phishing gedetecteerd: ${data.is_phishing}`,
-          isPhishing ? "text-red-500" : "text-green-500"
-        );
+        result.innerHTML = `<span class="text-green-400">✅ Analyse voltooid:</span> ${data.is_phishing}`;
       } else {
-        showMessage(
-          resultText,
-          `❌ Fout: ${data.error || "Onbekende fout"}`,
-          "text-red-500"
-        );
+        result.innerHTML = `<span class="text-red-500">❌ Fout:</span> ${data.error}`;
       }
     } catch (error) {
-      showMessage(
-        resultText,
-        "⚠️ Er is een fout opgetreden bij de analyse.",
-        "text-red-500"
-      );
-      console.error("Fout bij API-call:", error);
+      loading.classList.add("hidden");
+      result.innerHTML = `<span class="text-red-500">❌ Netwerkfout. Probeer opnieuw.</span>`;
     }
-  }
-
-  function showMessage(element, message, colorClass) {
-    element.innerText = message;
-    element.className = `mt-2 font-semibold ${colorClass}`;
-  }
+  });
 });
